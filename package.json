@@ -1,0 +1,29 @@
+{
+  "name": "duckpalproject",
+  "version": "1.0.0",
+  "description": "CS 546 Web Group 19 ",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "seed": "node ./tasks/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrishnaVamsi72/CS546-DuckPal"
+  },
+  "author": "Krishna Vamsi Penugonda",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "brcypt": "^1.0.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
+    "mongodb": "^5.9.2",
+    "nodemailer": "^6.9.7",
+    "xss": "^1.0.15"
+  }
+}
