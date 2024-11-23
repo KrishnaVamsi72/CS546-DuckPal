@@ -1,0 +1,80 @@
+<main>
+    <h2>Edit User</h2>
+    <form action="/users/edit" method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" value="{{user.username}}" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value="{{user.email}}" required><br>
+        <label for="fullName">Full Name:</label><br>
+        <input type="text" id="fullName" name="fullName" value="{{user.fullName}}" ><br>
+        <label for="bio">Bio:</label><br>
+        <textarea id="bio" name="bio" rows="4">{{user.bio}}</textarea><br>
+        
+        <div class="major-container">
+        <label for="major">Major:</label><br>
+        <select id="major" name="major" required>
+            {{#each majorOptions}}
+                <option value="{{this}}" {{#equal this ../user.major}}selected{{/equal}}>{{this}}</option>
+            {{/each}}
+        </select>
+        </div>
+
+
+        <!-- Languages Multi-Select -->
+        <div class="languages-container">
+            <label>Languages:</label><br>
+            {{#each languagesOptions}}
+                <input type="checkbox" id="{{this}}" name="languages" value="{{this}}" {{#if (isSelectedLanguage this ../user.languages)}}checked{{/if}}>
+                <label for="{{this}}">{{this}}</label><br>
+            {{/each}}
+        </div>
+
+        <!-- Courses Enrolled Multi-Select -->
+        <div class="coursesEnrolled-container">
+            <label>Courses Enrolled:</label><br>
+            {{#each coursesOptions}}
+                <input type="checkbox" id="{{this}}" name="coursesEnrolled" value="{{this}}" {{#if (isSelectedCourse this ../user.coursesEnrolled)}}checked{{/if}}>
+                <label for="{{this}}">{{this}}</label><br>
+            {{/each}}
+        </div>
+
+        <div class="gradyear-container">
+            <label for="gradYear">Graduation Year:</label><br />
+            <select id="gradYear" name="gradYear" required>
+            <!-- generating items dynamically -->
+            </select>
+        </div>
+
+        <button type="submit">Save Changes</button>
+    </form>
+    <button onclick="history.back()">Go Back</button>
+
+
+    {{#if error}}
+        <div class="error-container">
+            <p>{{error}}</p>
+        </div>
+    {{/if}}
+
+        <script>
+        // for gradYear dropdown
+        function populateGraduationYears() {
+            const selectElement = document.getElementById('gradYear');
+            const currentYear = new Date().getFullYear();
+            const endYear = currentYear + 10;
+
+            // Loop to add options for each year from current year to 10 years ahead
+            for (let year = currentYear; year <= endYear; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                selectElement.appendChild(option);
+            }
+        }
+
+        // Calling this function when the document is loaded
+        document.addEventListener('DOMContentLoaded', populateGraduationYears);
+    </script>
+
+</main>
+

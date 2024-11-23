@@ -1,0 +1,13 @@
+<div class="wrongaccess">
+  {{#if wrongAccess}}
+  <h1>Sorry, You donot have access to Edit or Delete others posts</h1>
+  {{/if}}
+  {{#if deleted}}
+  <h1>Your Post has been successfully deleted</h1>
+  {{/if}}
+  {{#if notFound}}
+  <h1>Sorry, No post found with that ID</h1>
+  {{/if}}
+  
+  <h2><a href="/posts/">Back to All posts</a></h2>
+</div>

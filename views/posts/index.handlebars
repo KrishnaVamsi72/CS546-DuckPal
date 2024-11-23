@@ -1,0 +1,62 @@
+<main>
+    <h1>Welcome {{username}}!!</h1>
+    <h2>All Posts</h2>
+    <section>
+        <form id="search-tag-form">
+            <label for="tag">Search by Tag:</label>
+            <input type="text" id="tag" name="tag">
+            <button type="submit">Search</button>
+        </form>
+            <form action="/users/{{userId}}" method="get" id="userprofile">
+            <h3 class="create"><button type="submit">My Profile</button></h3>
+        </form>
+        <h3 class=""><a href="/posts">Go back</a></h3>
+        <h3 class="create"><a href="/posts/new">Create Post</a></h3>
+                 
+                 <form action="/posts/{{userId}}" method="get" id="userprofile">
+    <h3 class="create"><button type="submit">View My Post</button></h3>
+        </form>
+    <form action="/logout" method="get" id="logout">
+    <h3 class="create"><button type="submit">logout</button></h3>
+        </form>
+        <h3 id="createsession" class="session"><a href="/sessions/new">Schedule Session</a></h3>
+                <h3 id="sentsessions" class="sessions"><a href="/sessions/{{username}}/sent">Sent Session Requests</a></h3>
+        <h3 id="receivedsessions" class="sessions"><a href="/sessions/{{username}}/received">Received Session Requests</a></h3>
+    </section>
+    <section>
+        <h3>Posts</h3>
+        <div class="col-sm-12 col-md-6" id="posts-area">
+            {{#each posts}}
+                <article class="post">
+                    <h1>{{title}}</h1>
+                    <h2>Posted By <a href="/users/{{posterId}}">{{posterName}}</a></h2>
+                    <p>{{content}}</p>
+                    <h3 class="update"><a href="/posts/{{_id}}/update/{{posterId}}">Update</a></h3>
+                    <h3 class="delete"><a href="/posts/{{_id}}/delete/{{posterId}}">Delete</a></h3>
+                    {{#userLikedPost this ../user}}
+                        <button class="like" data-post-id="{{this._id}}" data-state="unlike" data-user-name="{{../user}}">
+                        unlike
+                        </button>
+                        {{else}}
+                        <button class="like" data-post-id="{{this._id}}" data-state="like" data-user-name="{{../user}}">
+                        like
+                        </button>
+                    {{/userLikedPost}}
+                   <span class="likes-count">{{this.likes}}</span>
+                   {{#userDislikedPost this ../user}}
+                        <button class="dislike" data-post-id="{{this._id}}"  data-state="undislike" data-user-name="{{../user}}">
+                        undislike
+                        </button>
+                        {{else}}
+                        <button class="dislike" data-post-id="{{this._id}}" data-state="dislike" data-user-name="{{../user}}">
+                        dislike
+                        </button>
+                    {{/userDislikedPost}}
+                   <span class="dislikes-count">{{this.dislikes}}</span>
+                   <h3 class="comment"><a href="/posts/{{_id}}/comment">Add/View Comments</a></h3>
+                </article>
+            {{/each}}
+         
+        </div>
+    </section>
+</main>

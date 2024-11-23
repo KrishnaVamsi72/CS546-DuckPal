@@ -1,0 +1,12 @@
+<section class = "sentreq">
+  <h1>Sent Sessions</h1>
+  {{#each sentReqList}}
+  <article class="session">
+    <h2>{{course}}</h2>
+    <p>{{content}}</p>
+    <p>Sent request to {{receiverName}} to schedule a session on {{date}} during {{timeSlot}}</p>
+    <p>Current Status is {{status}} </p>
+  </article>
+  {{/each}}
+  <h3><a href="/posts">Back To Home</a></h3>
+</section>

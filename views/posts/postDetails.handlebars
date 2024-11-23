@@ -1,0 +1,13 @@
+<main>
+    <h2>View All My Posts</h2>
+    <ul>
+        {{#each postList}}
+        <li>
+                <h3>{{this.title}}</h3>
+            </a>
+            <p>{{this.content}}</p>
+            <p>Tags: {{this.tags}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</main>

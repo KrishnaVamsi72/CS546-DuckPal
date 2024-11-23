@@ -1,0 +1,25 @@
+<article class="post">
+  <h1>{{post.title}}</h1>
+  <h2>Posted By <a href="/users/{{post.posterId}}">{{post.posterName}}</a></h2>
+  <p>{{post.content}}</p>
+  <p>It is related to {{post.course}} course</p>
+  <h2>Tags Related to this post</h2>
+  {{#each post.tags}}
+  <ul >
+    <li class="tags">{{this}}</li>
+  </ul>
+  
+  {{/each}}
+  <h2>Comments</h2>
+  <ul  id="comment-list">
+        {{#each post.comments}} 
+        <li>
+            <h2>{{this.content}}</h2>
+            <h5>Commented By <a href="/users/{{this.userId}}">{{this.userName}}</a></h5>
+        </li> 
+        {{/each}}
+  </ul>
+  <input type="text" id="commentBox" placeholder="Enter Comment here">
+  <button id="submitButton" data-post-id="{{post._id}}">Submit</button>
+  <h2><a href="/posts/">Back to All posts</a></h2>
+</article>

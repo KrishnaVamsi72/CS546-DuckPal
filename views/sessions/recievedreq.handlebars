@@ -1,0 +1,16 @@
+<section class="receivedreq">
+  <h1>Received Sessions</h1>
+  {{#each receivedReqList}}
+    <article class="session">
+      <h2>{{course}}</h2>
+      <p>{{content}}</p>
+      <p>Received request from {{senderName}} to schedule a session on {{date}} during {{timeSlot}}</p>
+      <p class = "status">Current Status is {{status}}</p>
+      {{#if checker}}
+         <button class="accept-button" data-session-id="{{_id}}" data-user-name="{{receiverName}}" data-action="accepted">Accept</button>
+        <button class="reject-button" data-session-id="{{_id}}" data-user-name="{{receiverName}}" data-action="rejected">Reject</button>
+      {{/if}}
+    </article>
+  {{/each}}
+   <h3><a href="/posts">Back To Home</a></h3>
+</section>

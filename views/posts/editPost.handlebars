@@ -1,0 +1,18 @@
+<main>
+    <form id="updatePostForm" action="/posts/{{postId}}/update" method="POST">
+        <label for="course">Course:</label><br>
+        <input type="text" id="course" name="course" value="{{post.course}}"><br>
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" value="{{post.title}}"><br>
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" rows="4">{{post.content}}</textarea><br>
+        <label for="tags">Tags:</label><br>
+        <input type="text" id="tags" name="tags" placeholder="Seperated by comma"><br>
+        <button type="submit">Submit</button>
+    </form>
+    <p><div id="errors"></div></p>
+    {{#if hasErrors}}
+    <p>{{error}}</p>
+    {{/if}}
+<h2><a href="/posts/">Back to All posts</a></h2>
+</main>

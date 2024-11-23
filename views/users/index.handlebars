@@ -1,0 +1,51 @@
+<main>
+  <h2>Welcome, {{username}}!</h2>
+  <section>
+
+    <h1>User Profile</h1>
+    <p><strong>Username:</strong> {{user.username}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+    <p><strong>Full Name:</strong> {{user.fullName}}</p>
+    <p><strong>Major:</strong> {{user.major}}</p>
+    <p><strong>Languages:</strong> {{user.languages}}</p>
+    <p><strong>Courses Enrolled:</strong> {{user.coursesEnrolled}}</p>
+    <p><strong>Bio:</strong> {{user.bio}}</p>
+    <p><strong>Graduation Year:</strong> {{user.gradYear}}</p>
+
+    <!-- Display reviews -->
+    <p><strong>Reviews:</strong>{{#if user.reviews.length}}
+        <h2>Reviews:</h2>
+        <ul>
+          {{#each user.reviews}}
+            <li>
+              <p><strong>Reviewer:</strong> {{this.reviewerId}}</p>
+              <p><strong>Rating:</strong> {{this.rating}}</p>
+              <p><strong>Review:</strong> {{this.review}}</p>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>No reviews yet.</p>
+      {{/if}}
+    </p>
+
+    <h3>Actions</h3>
+    <ul>
+      <li>
+        <form action="/users/edit" method="get" id="editprofile">
+          <h3 class="create"><button type="submit">Edit Profile</button></h3>
+        </form>
+      </li>
+      <li>
+        <form action="/users/delete" method="post" id="deleteprofile">
+          <h3 class="create"><button type="submit">Delete Profile</button></h3>
+        </form>
+      </li>
+    </ul>
+  </section>
+  <form action="/posts" method="get" id="goback">
+    <h3 class="goback"><button type="submit">Go to Home</button></h3>
+  </form>
+  <section>
+  </section>
+</main>
