@@ -1,0 +1,43 @@
+<main  class="login-container">
+    <div class="login-page">
+        <h1>Login to DuckPal</h1>
+        <form id="signin-form"action="/login" method="POST">
+
+            <div class="form-div">
+                <label for="username">Username :</label>
+                <input type="text" id="username" name="username" >
+            </div>
+
+            <div class="form-div">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+                <!-- Error Message for Missing Password -->
+                <div id="no-pwd" class="alert" role="alert" hidden>Please enter your password</div>
+            </div>
+
+            <div id="login_errors" class="alert alert-danger" style="display: none;">
+                <!-- To display Error messages -->
+            </div>
+
+            <div>
+                <button type="submit" id="submitButton" name="submitButton">Login</button>
+            </div>
+
+            <!-- register -->
+            <p>Not a member? <a href="/register">Click here to register</a></p>
+
+        </form>
+
+        {{#if hasErrors}}
+        <ul class="error-list" id="error-list">
+            {{#each errors}}
+            <li>
+                {{this}}
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </div>
+
+    <script src="/public/js/login.js"></script>
+</main>

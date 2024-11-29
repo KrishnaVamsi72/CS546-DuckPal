@@ -1,0 +1,189 @@
+<main>
+  <div class="signup-page">
+    <h2>Signup Form</h2>
+    <form action="/register" method="POST">
+      <div class="username-container">
+        <label for="username">Username:</label><br />
+        <input type="text" id="username" name="username" required /><br />
+      </div>
+      <div class="password-container">
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="password" required /><br />
+      </div>
+
+      <div class="email-container">
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br />
+      </div>
+      <div class="fullname-container">
+        <label for="fullName">Full Name:</label><br />
+        <input type="text" id="fullName" name="fullName" required /><br />
+      </div>
+      <div class="major-container">
+        <label for="major">Major:</label><br />
+        <select id="major" name="major" required>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Software Engineering">Software Engineering</option>
+          <option value="Financial Engineering">Financial Engineering</option>
+        </select>
+      </div>
+      <div class="languages-container">
+        <label>Languages:</label><br />
+        <input type="checkbox" id="hindi" name="languages[]" value="Hindi" />
+        <label for="hindi">Hindi</label><br />
+        <input
+          type="checkbox"
+          id="english"
+          name="languages[]"
+          value="English"
+        />
+        <label for="english">English</label><br />
+        <input type="checkbox" id="telugu" name="languages[]" value="Telugu" />
+        <label for="telugu">Telugu</label><br />
+        <input type="checkbox" id="french" name="languages[]" value="French" />
+        <label for="french">French</label><br />
+        <input
+          type="checkbox"
+          id="italian"
+          name="languages[]"
+          value="Italian"
+        />
+        <label for="italian">Italian</label><br />
+        <input
+          type="checkbox"
+          id="spanish"
+          name="languages[]"
+          value="Spanish"
+        />
+        <label for="spanish">Spanish</label><br />
+        <input type="checkbox" id="german" name="languages[]" value="German" />
+        <label for="german">German</label><br />
+        <input
+          type="checkbox"
+          id="chinese"
+          name="languages[]"
+          value="Chinese"
+        />
+        <label for="chinese">Chinese</label><br />
+        <input
+          type="checkbox"
+          id="japanese"
+          name="languages[]"
+          value="Japanese"
+        />
+        <label for="japanese">Japanese</label><br />
+      </div>
+      <div class="coursesEnrolled-container">
+        <label>Courses Enrolled:</label><br />
+        <input
+          type="checkbox"
+          id="cs546"
+          name="coursesEnrolled[]"
+          value="CS546"
+        />
+        <label for="cs546"> CS546 Web Programming</label><br />
+        <input
+          type="checkbox"
+          id="cs555"
+          name="coursesEnrolled[]"
+          value="CS555"
+        />
+        <label for="cs555"> CS55 Agile</label><br />
+        <input
+          type="checkbox"
+          id="cs545"
+          name="coursesEnrolled[]"
+          value="CS545"
+        />
+        <label for="cs545">CS545 Human Computer Interaction</label><br />
+        <input
+          type="checkbox"
+          id="cs570"
+          name="coursesEnrolled[]"
+          value="CS570"
+        />
+        <label for="cs570">CS570 Data Structures</label><br />
+        <input
+          type="checkbox"
+          id="cs556"
+          name="coursesEnrolled[]"
+          value="CS556"
+        />
+        <label for="cs556">CS556 Mathematical Foundations of Machine Learning</label><br
+        />
+        <input
+          type="checkbox"
+          id="cs513"
+          name="coursesEnrolled[]"
+          value="CS513"
+        />
+        <label for="cs513">CS513 Knowledge Discovery and Data Mining</label><br
+        />
+      </div>
+
+      {{! <script>
+                const coursesEnrolledSelect = document.getElementById("coursesEnrolled");
+                const selectedCoursesTextarea = document.getElementById("selectedCourses");
+                const selectedlanguages = document.getElementById("selectedlanguages");
+                const languagesSelect = document.getElementById("languages");
+                  languagesSelect.addEventListener("change", function () {
+                    const selectedOptions = Array.from(this.selectedOptions).map(option => option.text);
+                    selectedlanguages.value = selectedOptions.join("\n");
+                });
+                coursesEnrolledSelect.addEventListener("change", function () {
+                    const selectedOptions = Array.from(this.selectedOptions).map(option => option.text);
+                    selectedCoursesTextarea.value = selectedOptions.join("\n");
+                });
+            </script> }}
+
+      <div class="bio-container">
+        <label for="bio">Bio:</label><br />
+        <textarea id="bio" name="bio" rows="4" cols="50" required></textarea><br
+        />
+      </div>
+
+      <div class="gradyear-container">
+        <label for="gradYear">Graduation Year:</label><br />
+        <select id="gradYear" name="gradYear" required>
+          <!-- generating items dynamically -->
+        </select>
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+  <p>Already a member? <a href="/login">Click here to login</a></p>
+  <div class="msg">
+    {{#if hasMessage}}
+      <p class="error">{{message}}</p>
+    {{/if}}
+
+    <!-- success message -->
+    {{#if success}}
+      <p class="success">{{success}}
+        <a href="/login">Click here to login!</a></p>
+    {{/if}}
+  </div>
+
+    <script>
+        // for gradYear dropdown
+        function populateGraduationYears() {
+            const selectElement = document.getElementById('gradYear');
+            const currentYear = new Date().getFullYear();
+            const endYear = currentYear + 10;
+
+            // Loop to add options for each year from current year to 10 years ahead
+            for (let year = currentYear; year <= endYear; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                selectElement.appendChild(option);
+            }
+        }
+
+        // Calling this function when the document is loaded
+        document.addEventListener('DOMContentLoaded', populateGraduationYears);
+    </script>
+
+
+</main>
